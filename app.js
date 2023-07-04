@@ -1,3 +1,51 @@
+rockBtn = document.querySelector("#rock")
+paperBtn = document.querySelector("#paper")
+scissorsBtn = document.querySelector("#scissors")
+resultsP = document.querySelector("#results-p")
+resultsDiv = document.querySelector("#results-div")
+scoreP = document.querySelector("#score")
+scoreComputer = document.querySelector("#scoreComputer")
+btnCnt = document.querySelector("#btn-cont")
+
+let playerScore = 0;
+let computerScore = 0;
+
+rockBtn.addEventListener('click', function () {game("ROCK")});
+
+paperBtn.addEventListener('click', function () {game("PAPER")});
+
+scissorsBtn.addEventListener('click', function () {game("SCISSORS")});
+
+function game(playerSelection) {
+    computerSelection = getComputerChoice().toUpperCase();
+    x = playRound(playerSelection, computerSelection)
+    if (x === "win") {
+    playerScore += 1
+    }
+    else if (x === "lose") {
+        computerScore += 1;
+    }
+    if (x !== undefined){
+        resultsP.innerHTML = `${x}!`;
+
+    }
+    scoreP.innerHTML = `${playerScore}`;
+    scoreComputer.innerHTML = `${computerScore}`
+
+    if (playerScore + computerScore == 5) {
+        if (playerScore > computerScore) {
+            resultsDiv.innerHTML = 'You win!'
+        }
+        else {
+            resultsDiv.innerHTML = 'You lost!'
+        }
+        btnCnt.innerHTML = "";
+    } 
+}
+
+game()
+
+
 function getComputerChoice() {
     choice = Math.floor(Math.random() * 3) + 1
     if (choice === 1){
@@ -48,32 +96,3 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-
-function game(){
-    let playerScore = 0
-    let computerScore = 0
-    for (i = 0; i < 5; i++) {
-        playerSelection = prompt("Please enter rock paper or scissors").toUpperCase()
-        computerSelection = getComputerChoice().toUpperCase()
-        roundResult = playRound(playerSelection, computerSelection)
-        if (roundResult === "draw") {
-            console.log("Draw!")
-        }
-        else if (roundResult === "win") {
-            playerScore += 1
-            console.log(`You win! ${playerSelection} beats ${computerSelection}!`)
-        }
-        else {
-            computerScore += 1
-            console.log(`You lose! ${computerSelection} beats ${playerSelection}!`)           
-        }
-    }
-    console.log(`Your score: ${playerScore}, Opponents score: ${computerScore}`)
-    if (playerScore > computerScore) {
-        console.log("You win the game!")
-    }   
-    else {
-        console.log("You lose the game!")
-    }
-}
-game()
