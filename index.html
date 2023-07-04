@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="buttons-container" id="btn-cont">
+            <button class="rock-btn btn" id="rock">ROCK</button>    
+            <button class="paper-btn btn" id="paper">PAPER</button>
+            <button class="scissors-btn btn" id="scissors">SCISSORS</button>
+        </div>
+        <div class="results" id="results-div" >
+            <div>
+                <p>RESULTS:</p>
+                <p id="results-p"></p>
+            </div>
+            <div>
+                <p>YOUR SCORE:</p>
+                <p id="score"></p>
+            </div>
+            <div>
+                <p>OPPONENTS SCORE:</p>
+                <p id="scoreComputer"></p>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 <script src="app.js"></script>
 </html>
